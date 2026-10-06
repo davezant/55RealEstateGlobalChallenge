@@ -34,7 +34,7 @@ MESSAGES = {
     "situacao_invalida": "Situação inválida.",
     "limite_fotos": "O limite é de 12 fotos por imóvel.",
     "arquivo_ausente": "Envie um arquivo.",
-    "arquivo_grande": "A foto passa de 5 MB.",
+    "arquivo_grande": "A foto passa de 14 MB.",
     "tipo_invalido": "Use JPEG, PNG ou WebP.",
 }
 
