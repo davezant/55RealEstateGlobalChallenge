@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}+55 Real Estate Global | Praças{% endblock %}
+
+{% block content %}
+<main class="max-w-7xl mx-auto px-6 py-20">
+    <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+        <span class="text-overline font-semibold uppercase text-brass-text tracking-widest">
+            Cada praça entra por uma tese
+        </span>
+        <h1 class="font-display text-h1 text-primary">
+            Não vendemos praças. Entramos nelas com razão.
+        </h1>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="border border-line rounded p-6 bg-surface space-y-3">
+            <h2 class="font-display font-semibold text-primary text-lg">Panamá</h2>
+            <p class="text-overline text-brass-text">Eficiência regulatória e cambial</p>
+            <p class="text-small text-ink-muted">
+                Uma praça onde a moeda é o USD e a estrutura de propriedade é simples. Ideal para preservação de capital e exposição cambial limpa, sem ruído regulatório.
+            </p>
+            <p class="text-small font-medium text-ink">Dolarização. Estabilidade jurídica. Tributação enxuta.</p>
+            <p class="text-overline font-semibold text-brass-text uppercase">USD · Dollarized</p>
+            <a href="/imoveis?pais=PA" class="inline-block text-small font-medium text-primary underline underline-offset-4">VER ATIVOS →</a>
+        </div>
+
+        <div class="border border-line rounded p-6 bg-surface space-y-3">
+            <h2 class="font-display font-semibold text-primary text-lg">Dubai</h2>
+            <p class="text-overline text-brass-text">Renda e valorização em moeda forte</p>
+            <p class="text-small text-ink-muted">
+                Renda em AED atrelada ao dólar, demanda global contínua e residência via Golden Visa. A praça onde rendimento e valorização convivem em moeda forte.
+            </p>
+            <p class="text-small font-medium text-ink">Yields 6 a 9%. Golden Visa. Sem imposto de renda.</p>
+            <p class="text-overline font-semibold text-brass-text uppercase">AED · USD-pegged</p>
+            <p class="text-small text-ink-muted">Rendimentos, Golden Visa e imposto citados nesta praça são copy comercial ilustrativa.</p>
+            <a href="/imoveis?pais=AE" class="inline-block text-small font-medium text-primary underline underline-offset-4">VER ATIVOS →</a>
+        </div>
+
+        <div class="border border-line rounded p-6 bg-surface space-y-3">
+            <h2 class="font-display font-semibold text-primary text-lg">Brasil</h2>
+            <p class="text-overline text-brass-text">Proximidade e profundidade de mercado</p>
+            <p class="text-small text-ink-muted">
+                Para quem quer patrimônio em moeda real com gestão próxima. Selecionamos ativos de estoque em praças consolidadas: não especulação, mas posição de valor.
+            </p>
+            <p class="text-small font-medium text-ink">Mercado profundo. Ativos de estoque. Conhecimento local.</p>
+            <p class="text-overline font-semibold text-brass-text uppercase">BRL · Local depth</p>
+            <a href="/imoveis?pais=BR" class="inline-block text-small font-medium text-primary underline underline-offset-4">VER ATIVOS →</a>
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}+55 Real Estate Global | Lista de Espera{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-6 py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-7 flex flex-col p-8 sm:p-10 bg-surface border border-line rounded-xl gap-6 shadow-sm">
+            <div class="space-y-1">
+                <span class="text-overline font-semibold uppercase text-brass-text tracking-widest">
+                    Em breve
+                </span>
+                <h1 class="font-display text-h3 text-primary">
+                    Lista de Espera
+                </h1>
+            </div>
+
+            <form action="#" method="POST" class="flex flex-col gap-5">
+                <div class="flex flex-col gap-1.5">
+                    <label for="nome" class="text-xs font-semibold uppercase tracking-wider text-primary">
+                        Nome
+                    </label>
+                    <input type="text" id="nome" name="nome" required placeholder="Como deseja ser chamado" class="w-full bg-surface-hover border border-line rounded px-4 py-2.5 text-small text-primary placeholder:text-ink-muted focus:outline-none focus:border-primary">
+                </div>
+                <div class="flex flex-col gap-1.5">
+                    <label for="email" class="text-xs font-semibold uppercase tracking-wider text-primary">
+                        E-mail
+                    </label>
+                    <input type="email" id="email" name="email" required placeholder="seu@email.example" class="w-full bg-surface-hover border border-line rounded px-4 py-2.5 text-small text-primary placeholder:text-ink-muted focus:outline-none focus:border-primary">
+                </div>
+                <div class="flex flex-col gap-1.5">
+                    <label for="praca" class="text-xs font-semibold uppercase tracking-wider text-primary">
+                        Praça de interesse
+                    </label>
+                    <select id="praca" name="praca" class="w-full bg-surface-hover border border-line rounded px-4 py-2.5 text-small text-primary placeholder:text-ink-muted focus:outline-none focus:border-primary">
+                        <option value="geral">Geral</option>
+                        <option value="panama">Panamá</option>
+                        <option value="dubai">Dubai</option>
+                        <option value="brasil">Brasil</option>
+                    </select>
+                </div>
+                <button type="submit" class="inline-flex items-center justify-center gap-3 bg-primary text-on-primary font-medium text-small px-8 py-3.5 rounded hover:bg-primary-700 shadow-sm mt-2">
+                    <span>ENTRAR NA LISTA DE ESPERA</span>
+                    <span class="text-base">→</span>
+                </button>
+            </form>
+        </div>
+        <div class="lg:col-span-5 flex flex-col space-y-6 lg:pl-6 lg:py-4">
+            <span class="text-overline font-semibold uppercase text-brass-text tracking-widest">
+                Em breve
+            </span>
+            <h2 class="font-display text-h2 text-primary leading-tight">
+                A plataforma está em construção.
+            </h2>
+            <p class="text-body text-ink-muted leading-relaxed">
+                Reserve o seu lugar na lista de espera. Será o primeiro a conhecer os ativos sob governança +55 quando a plataforma abrir.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,202 @@
+{% extends "admin/base.html" %}
+
+{% block title %}+55 Real Estate Global | {{ 'Editar' if real_estate else 'Novo' }} Imóvel{% endblock %}
+
+{% block content %}
+<main class="flex-1 p-4 md:p-10 flex flex-col gap-2 font-display ">
+    <a href="{{ url_for('admin.real_estate') }}" class="text-xs p-2">
+        <span class="text-xl">←</span> Voltar
+    </a>
+    <h2 class="text-2xl font-semibold mb-4">
+        {{ 'Editar' if real_estate else 'Novo' }} Imóvel
+    </h2>
+
+    <form method="POST" enctype="multipart/form-data" action="{{ url_for('admin.real_estate_edit', real_estate_id=real_estate.real_estate_id) if real_estate else url_for('admin.real_estate_new') }}" class="bg-white p-6 border border-line flex flex-col gap-4">
+        {% if errors %}
+        <p class="text-sm text-tk-error" role="alert">Revise os campos indicados.</p>
+        {% endif %}
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="flex flex-col gap-2">
+                <label for="ref" class="text-sm font-semibold">Referência</label>
+                <input id="ref" name="ref" value="{{ form.ref if form.ref is not none else '' }}" required class="p-2 rounded border border-line">
+                {% if errors.ref %}<p class="text-xs text-tk-error" role="alert">{{ errors.ref }}</p>{% endif %}
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label for="slug" class="text-sm font-semibold">Slug</label>
+                <input id="slug" name="slug" value="{{ form.slug if form.slug is not none else '' }}" placeholder="Gerado a partir do título" class="p-2 rounded border border-line">
+                {% if errors.slug %}<p class="text-xs text-tk-error" role="alert">{{ errors.slug }}</p>{% endif %}
+            </div>
+        </div>
+
+        <div class="flex flex-col gap-2">
+            <label for="titulo" class="text-sm font-semibold">Título do Imóvel</label>
+            <input id="titulo" name="titulo" value="{{ form.titulo if form.titulo is not none else '' }}" required class="p-2 rounded border border-line">
+                {% if errors.titulo %}<p class="text-xs text-tk-error" role="alert">{{ errors.titulo }}</p>{% endif %}
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="flex flex-col gap-2">
+                <label for="tipologia" class="text-sm font-semibold">Tipologia</label>
+                <select id="tipologia" name="tipologia" required class="p-2 rounded border border-line bg-white">
+                    {% for item in ['apartamento', 'penthouse', 'villa', 'estate'] %}
+                    <option value="{{ item }}" {% if form.tipologia == item %}selected{% endif %}>{{ item|title }}</option>
+                    {% endfor %}
+                </select>
+                {% if errors.tipologia %}<p class="text-xs text-tk-error" role="alert">{{ errors.tipologia }}</p>{% endif %}
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label for="situacao" class="text-sm font-semibold">Situação</label>
+                <select id="situacao" name="situacao" required class="p-2 rounded border border-line bg-white">
+                    {% for item in ['rascunho', 'publicado', 'reservado', 'vendido', 'arquivado'] %}
+                    <option value="{{ item }}" {% if form.situacao == item %}selected{% endif %}>{{ item|title }}</option>
+                    {% endfor %}
+                </select>
+                {% if errors.situacao %}<p class="text-xs text-tk-error" role="alert">{{ errors.situacao }}</p>{% endif %}
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="flex flex-col gap-2">
+                <label for="pais" class="text-sm font-semibold">País (ISO)</label>
+                <select id="pais" name="pais" class="p-2 rounded border border-line bg-white">
+                    <option value="BR" {% if form.pais == 'BR' %}selected{% endif %}>Brasil</option>
+                    <option value="PA" {% if form.pais == 'PA' %}selected{% endif %}>Panamá</option>
+                    <option value="AE" {% if form.pais == 'AE' %}selected{% endif %}>Dubai</option>
+                </select>
+                {% if errors.pais %}<p class="text-xs text-tk-error" role="alert">{{ errors.pais }}</p>{% endif %}
+                <!-- <input id="pais" name="pais" value="{{ real_estate.pais if real_estate else '' }}" maxlength="2" required class="p-2 rounded border border-line">"-->
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label for="cidade" class="text-sm font-semibold">Cidade</label>
+                <input id="cidade" name="cidade" value="{{ form.cidade if form.cidade is not none else '' }}" required class="p-2 rounded border border-line">
+                {% if errors.cidade %}<p class="text-xs text-tk-error" role="alert">{{ errors.cidade }}</p>{% endif %}
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label for="bairro" class="text-sm font-semibold">Bairro</label>
+                <input id="bairro" name="bairro" value="{{ form.bairro if form.bairro is not none else '' }}" required class="p-2 rounded border border-line">
+                {% if errors.bairro %}<p class="text-xs text-tk-error" role="alert">{{ errors.bairro }}</p>{% endif %}
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="flex flex-col gap-2">
+                <label for="preco_valor" class="text-sm font-semibold">Preço</label>
+                <input id="preco_valor" name="preco_valor" type="number" step="0.01" value="{{ form.preco_valor if form.preco_valor is not none else '' }}" class="p-2 rounded border border-line">
+                {% if errors.preco_valor %}<p class="text-xs text-tk-error" role="alert">{{ errors.preco_valor }}</p>{% endif %}
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label for="preco_moeda" class="text-sm font-semibold">Moeda</label>
+                <select id="preco_moeda" name="preco_moeda" class="p-2 rounded border border-line bg-white">
+                    <option value="BRL" {% if form.preco_moeda == 'BRL' %}selected{% endif %}>BRL</option>
+                    <option value="USD" {% if form.preco_moeda == 'USD' %}selected{% endif %}>USD</option>
+                    <option value="AED" {% if form.preco_moeda == 'AED' %}selected{% endif %}>AED</option>
+                </select>
+                {% if errors.preco_moeda %}<p class="text-xs text-tk-error" role="alert">{{ errors.preco_moeda }}</p>{% endif %}
+                <!-- <input id="preco_moeda" name="preco_moeda" value="{{ real_estate.preco_moeda if real_estate else '' }}" placeholder="USD" maxlength="3" class="p-2 rounded border border-line"> !-->
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="flex flex-col gap-2">
+                <label for="area_privativa" class="text-sm font-semibold">Área Privativa (m²)</label>
+                <input id="area_privativa" name="area_privativa" type="number" step="0.01" value="{{ form.area_privativa if form.area_privativa is not none else '' }}" class="p-2 rounded border border-line">
+                {% if errors.area_privativa %}<p class="text-xs text-tk-error" role="alert">{{ errors.area_privativa }}</p>{% endif %}
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label for="area_construida" class="text-sm font-semibold">Área Construída (m²)</label>
+                <input id="area_construida" name="area_construida" type="number" step="0.01" value="{{ form.area_construida if form.area_construida is not none else '' }}" class="p-2 rounded border border-line">
+                {% if errors.area_construida %}<p class="text-xs text-tk-error" role="alert">{{ errors.area_construida }}</p>{% endif %}
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label for="area_terreno" class="text-sm font-semibold">Área Terreno (m²)</label>
+                <input id="area_terreno" name="area_terreno" type="number" step="0.01" value="{{ form.area_terreno if form.area_terreno is not none else '' }}" class="p-2 rounded border border-line">
+                {% if errors.area_terreno %}<p class="text-xs text-tk-error" role="alert">{{ errors.area_terreno }}</p>{% endif %}
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div class="flex flex-col gap-2">
+                <label for="quartos" class="text-sm font-semibold">Quartos</label>
+                <input id="quartos" name="quartos" type="number" value="{{ form.quartos if form.quartos is not none else '' }}" class="p-2 rounded border border-line">
+                {% if errors.quartos %}<p class="text-xs text-tk-error" role="alert">{{ errors.quartos }}</p>{% endif %}
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label for="banheiros" class="text-sm font-semibold">Banheiros</label>
+                <input id="banheiros" name="banheiros" type="number" value="{{ form.banheiros if form.banheiros is not none else '' }}" class="p-2 rounded border border-line">
+                {% if errors.banheiros %}<p class="text-xs text-tk-error" role="alert">{{ errors.banheiros }}</p>{% endif %}
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label for="vagas" class="text-sm font-semibold">Vagas</label>
+                <input id="vagas" name="vagas" type="number" value="{{ form.vagas if form.vagas is not none else '' }}" class="p-2 rounded border border-line">
+                {% if errors.vagas %}<p class="text-xs text-tk-error" role="alert">{{ errors.vagas }}</p>{% endif %}
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label for="andar" class="text-sm font-semibold">Andar</label>
+                <input id="andar" name="andar" type="number" value="{{ form.andar if form.andar is not none else '' }}" class="p-2 rounded border border-line">
+                {% if errors.andar %}<p class="text-xs text-tk-error" role="alert">{{ errors.andar }}</p>{% endif %}
+            </div>
+        </div>
+
+        <div class="flex flex-col gap-2">
+            <label for="parceiro" class="text-sm font-semibold">Parceiro</label>
+            <input id="parceiro" name="parceiro" value="{{ form.parceiro if form.parceiro is not none else '' }}" required class="p-2 rounded border border-line">
+                {% if errors.parceiro %}<p class="text-xs text-tk-error" role="alert">{{ errors.parceiro }}</p>{% endif %}
+        </div>
+
+        <div class="flex flex-col gap-2">
+            <label for="descricao" class="text-sm font-semibold">Descrição</label>
+            <textarea id="descricao" name="descricao" rows="4" required class="p-2 rounded border border-line">{{ form.descricao or '' }}</textarea>
+                {% if errors.descricao %}<p class="text-xs text-tk-error" role="alert">{{ errors.descricao }}</p>{% endif %}
+        </div>
+
+        {% if real_estate and real_estate.images %}
+        <div class="flex flex-col gap-2 border-t border-line pt-4">
+            <label class="text-sm font-semibold">Imagens Atuais</label>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {% for img in real_estate.images %}
+                <div class="border border-line p-2 rounded flex flex-col gap-2 bg-gray-50 relative">
+                    <img src="{{ url_for('main.media', arquivo=img.file_path) }}" alt="{{ img.alt }}" class="w-full h-32 object-cover rounded">
+                    <input type="text" name="existing_alt_{{ img.photo_id }}" aria-label="Descrição da foto" value="{{ img.alt }}" placeholder="Descrição" class="p-1 text-xs border rounded">
+                    <label class="text-xs text-red-600 flex items-center gap-1 cursor-pointer">
+                        <input type="checkbox" name="delete_images" value="{{ img.photo_id }}"> Remover
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="flex flex-col gap-2 border-t border-line pt-4">
+            <label class="text-sm font-semibold">Adicionar Novas Imagens</label>
+            
+            <input type="file" id="image_input" name="imagens" multiple accept="image/*" class="hidden">
+            
+            <button type="button" onclick="document.getElementById('image_input').click()" class="w-fit px-4 py-2 border border-line rounded text-sm hover:bg-gray-50 flex items-center gap-2">
+                Selecionar Imagens
+            </button>
+
+            <div id="preview_grid" class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2"></div>
+            {% if errors.imagens or errors.alt %}<p class="text-xs text-tk-error" role="alert">{{ errors.imagens or errors.alt }}</p>{% endif %}
+        </div>
+
+        <div class="flex justify-end pt-4 border-t border-line">
+            <button type="submit" class="px-6 py-2 bg-tk-primary text-white rounded font-semibold">
+                Salvar Imóvel
+            </button>
+        </div>
+    </form>
+</main>
+
+<script src="{{ url_for('static', filename='scripts/realEstateFormInput.js') }}"></script>
+{% endblock %}

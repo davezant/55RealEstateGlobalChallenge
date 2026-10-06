@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}+55 Real Estate Global | Diagnóstico de Alocação{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-6 py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-7 flex flex-col p-8 sm:p-10 bg-surface border border-line rounded-xl gap-6 shadow-sm">
+            <div class="space-y-1">
+                <span class="text-overline font-semibold uppercase text-brass-text tracking-widest">
+                    Perfil
+                </span>
+                <h1 class="font-display text-h3 text-primary">
+                    Diagnóstico de Alocação
+                </h1>
+            </div>
+
+            <form action="#" method="POST" class="flex flex-col gap-5">
+                <div class="flex flex-col gap-1.5">
+                    <label for="nome" class="text-xs font-semibold uppercase tracking-wider text-primary">
+                        Nome
+                    </label>
+                    <input type="text" id="nome" name="nome" required placeholder="Nome completo" class="w-full bg-surface-hover border border-line rounded px-4 py-2.5 text-small text-primary placeholder:text-ink-muted focus:outline-none focus:border-primary">
+                </div>
+                <div class="flex flex-col gap-1.5">
+                    <label for="email" class="text-xs font-semibold uppercase tracking-wider text-primary">
+                        E-mail
+                    </label>
+                    <input type="email" id="email" name="email" required placeholder="seu@email.example" class="w-full bg-surface-hover border border-line rounded px-4 py-2.5 text-small text-primary placeholder:text-ink-muted focus:outline-none focus:border-primary">
+                </div>
+                <div class="flex flex-col gap-1.5">
+                    <label for="patrimonio" class="text-xs font-semibold uppercase tracking-wider text-primary">
+                        Patrimônio estimado (USD)
+                    </label>
+                    <select id="patrimonio" name="patrimonio" class="w-full bg-surface-hover border border-line rounded px-4 py-2.5 text-small text-primary placeholder:text-ink-muted focus:outline-none focus:border-primary">
+                        <option value="ate-500k">Até US$ 500K</option>
+                        <option value="500k-1m">US$ 500K a 1M</option>
+                        <option value="1m-5m">US$ 1M a 5M</option>
+                        <option value="5m-mais">US$ 5M+</option>
+                    </select>
+                </div>
+                <fieldset class="flex flex-col gap-3">
+                    <legend class="text-xs font-semibold uppercase tracking-wider text-primary mb-1.5">
+                        Objetivo principal
+                    </legend>
+                    <label class="flex items-start gap-3 p-4 bg-surface border border-line rounded cursor-pointer">
+                        <input type="radio" name="objetivo" value="preservacao" required class="mt-1">
+                        <span class="flex flex-col">
+                            <span class="text-small font-semibold text-primary">Preservação de Capital</span>
+                            <span class="text-small text-ink-muted">Proteger o patrimônio em moeda forte.</span>
+                        </span>
+                    </label>
+                    <label class="flex items-start gap-3 p-4 bg-surface border border-line rounded cursor-pointer">
+                        <input type="radio" name="objetivo" value="renda" class="mt-1">
+                        <span class="flex flex-col">
+                            <span class="text-small font-semibold text-primary">Geração de Renda</span>
+                            <span class="text-small text-ink-muted">Renda recorrente e previsível.</span>
+                        </span>
+                    </label>
+                    <label class="flex items-start gap-3 p-4 bg-surface border border-line rounded cursor-pointer">
+                        <input type="radio" name="objetivo" value="valorizacao" class="mt-1">
+                        <span class="flex flex-col">
+                            <span class="text-small font-semibold text-primary">Valorização Cambial</span>
+                            <span class="text-small text-ink-muted">Crescimento em moeda forte.</span>
+                        </span>
+                    </label>
+                    <label class="flex items-start gap-3 p-4 bg-surface border border-line rounded cursor-pointer">
+                        <input type="radio" name="objetivo" value="diversificacao" class="mt-1">
+                        <span class="flex flex-col">
+                            <span class="text-small font-semibold text-primary">Diversificação Patrimonial</span>
+                            <span class="text-small text-ink-muted">Distribuir risco entre praças.</span>
+                        </span>
+                    </label>
+                </fieldset>
+                <button type="submit" class="inline-flex items-center justify-center gap-3 bg-primary text-on-primary font-medium text-small px-8 py-3.5 rounded hover:bg-primary-700 shadow-sm mt-2">
+                    <span>CONTINUAR</span>
+                    <span class="text-base">→</span>
+                </button>
+            </form>
+        </div>
+        <div class="lg:col-span-5 flex flex-col space-y-6 lg:pl-6 lg:py-4">
+            <span class="text-overline font-semibold uppercase text-brass-text tracking-widest">
+                Diagnóstico de alocação
+            </span>
+            <h2 class="font-display text-h2 text-primary leading-tight">
+                Antes do ativo, o estudo da sua alocação.
+            </h2>
+            <p class="text-body text-ink-muted leading-relaxed">
+                Nem todo investidor compra de imediato, e não deveria, sem um estudo. O diagnóstico é a primeira etapa: entendemos perfil, objetivo e horizonte para recomendar a alocação que faz sentido para o seu patrimônio.
+            </p>
+            <ol class="space-y-3 text-small">
+                <li class="font-semibold text-primary">01 · Perfil</li>
+                <li class="text-ink-muted">02 · Tese e praças</li>
+                <li class="text-ink-muted">03 · Resultado</li>
+            </ol>
+        </div>
+    </div>
+</div>
+{% endblock %}

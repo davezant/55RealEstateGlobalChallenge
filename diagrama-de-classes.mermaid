@@ -1,0 +1,74 @@
+classDiagram
+    class Money {
+        +Decimal amount
+        +str currency
+        +per_area(area) Money
+        +to_usd() Decimal
+        +to_dict() dict
+        +format() str
+    }
+    class Place {
+        +str code
+        +str name
+        +str currency
+    }
+    class Typology {
+        <<abstract>>
+        +str key
+        +str label
+        +tuple required_fields
+        +tuple not_applicable_fields
+        +str area_basis
+        +missing_fields(data) list
+        +forbidden_fields(data) list
+        +price_per_m2(price, data) Money
+    }
+    class UnitTypology {
+        area_privativa, quartos, andar
+        base do m2: area privativa
+    }
+    class HouseTypology {
+        area_construida, area_terreno, quartos
+        base do m2: area construida
+    }
+    class Apartment
+    class Penthouse
+    class Villa
+    class Estate
+    class RealEstateModel {
+        +int real_estate_id
+        +str ref
+        +str slug
+        +StatusEnum status
+        +datetime sold_at
+    }
+    class RealEstatePhotoModel {
+        +str file_path
+        +str alt
+        +int order
+        +bool is_cover
+    }
+    class SiteTextModel {
+        +str page
+        +str field
+        +str value
+    }
+    class RevokedTokenModel {
+        +str jti
+        +datetime expires_at
+    }
+    class UserModel {
+        +str email
+        +str hash_pwd
+    }
+    Typology <|-- UnitTypology
+    Typology <|-- HouseTypology
+    UnitTypology <|-- Apartment
+    UnitTypology <|-- Penthouse
+    HouseTypology <|-- Villa
+    HouseTypology <|-- Estate
+    Typology ..> Money : calcula preco por m2
+    Place ..> Money : moeda de negociacao
+    RealEstateModel "1" *-- "0..12" RealEstatePhotoModel : composicao
+    RealEstateModel ..> Typology : usa pela tipologia
+    RealEstateModel ..> Place : usa pela praca

@@ -1,0 +1,19 @@
+CHECK - Mecânica de Login Completa com Verificação de Email e Senha -> Email e Senha -> Login ou Erro 
+CHECK - Mecânica de Sair da conta pelo Dashboard -> Limpar JWT -> Redirecionar Página Inicial
+Mecância de Adicionar conta -> Criar Formulário por outro admnistrador 
+
+Criar Página de Gerenciar Conta -> Modificar atributos como Nome, Email e Senha
+Criar Página de Gerenciar Imóvel -> Listar Imóveis, Criar Imóveis, Excluir Imóveis e Modificar Imóveis
+Criar Página Individual do Imóvel -> Organizar Informações no Imóvel/ Gerenciar Imagens do Imóvel/ (Possível modelo 3D)
+Criar Página de Gerenciar Formulários e Telemetria -> Receber Formulários Respondidos, deletar possíveis comentários de bots, registrar atividade estranha e de cliques ou uso de tela
+Criar Página de Gerenciar Páginas Estáticas -> Modificar HTML da Página com Visualizador
+
+Criar Página de Visualização dos Assets na forma de Catalogo
+Criar Página de Formulário que envia as informações de forma correta
+Criar um Script de Telemetria
+Criar Página de Diagnóstico, Tese, Praças e Tokenização 
+Configurar AOS
+Detectar hora do dia no Dashboard
+Compilar CSS da Página
+
+Tempo Max 5 de Outubro

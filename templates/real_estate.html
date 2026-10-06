@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}+55 Real Estate Global | Ativos{% endblock %}
+
+{% block content %}
+<main class="flex flex-col h-full">
+    <h1 class="text-center text-xl font-bold pt-6">Imóveis</h1>
+    <p class="text-center text-small text-ink-muted pt-2">Cada imóvel abaixo passa pela governança +55.</p>
+    <div class="flex flex-col md:flex-row gap-6 px-6 py-6">
+    <div class="w-full max-w-md">
+        <div class="flex flex-row gap-2">
+            <div class="flex flex-col p-4 bg-surface border border-line rounded gap-2 w-full">
+                <form method="GET" action="{{ url_for('main.assets') }}" class="flex flex-col gap-3">
+                    <label for="pais" class="text-xs font-semibold uppercase tracking-wider text-primary">Praça</label>
+                    <select
+                        id="pais"
+                        name="pais"
+                        class="w-full bg-surface border border-strong rounded px-4 py-2.5 text-small text-primary focus:outline-none focus:border-primary"
+                    >
+                        <option value="" {% if not selected_place %}selected{% endif %}>Todas</option>
+                        {% for place in places %}
+                        <option value="{{ place.code }}" {% if selected_place == place.code %}selected{% endif %}>{{ place.name }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <label for="ordenar" class="text-xs font-semibold uppercase tracking-wider text-primary">Ordenação</label>
+                    <select
+                        id="ordenar"
+                        name="ordenar"
+                        class="w-full bg-surface border border-strong rounded px-4 py-2.5 text-small text-primary focus:outline-none focus:border-primary"
+                    >
+                        <option value="recentes" {% if selected_order == 'recentes' %}selected{% endif %}>Recentes</option>
+                        <option value="preco_asc" {% if selected_order == 'preco_asc' %}selected{% endif %}>Menor preço</option>
+                        <option value="preco_desc" {% if selected_order == 'preco_desc' %}selected{% endif %}>Maior preço</option>
+                    </select>
+
+                    <button 
+                        type="submit" 
+                        class="bg-primary text-on-primary font-medium text-small px-5 py-2.5 rounded hover:bg-primary-700 whitespace-nowrap shadow-sm"
+                    >
+                    FILTRAR
+                    </button>
+                </form>
+                {% if selected_order in ('preco_asc', 'preco_desc') and not selected_place %}
+                <p class="text-small text-ink-muted">A ordenação por preço compara as moedas pela conversão de referência em dólar.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="bg-white w-full p-2 rounded border border-line">
+        {% if items %}
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 p-4">
+            {% for item in items %}
+            {% include "partials/property_card.html" %}
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="p-10 flex flex-col items-center gap-2 text-center">
+            <p class="font-display text-h3 text-primary">Nenhum ativo neste critério.</p>
+            <p class="text-small text-ink-muted">Ajuste os filtros para ver o portfólio disponível.</p>
+        </div>
+        {% endif %}
+    </div>
+    </div>
+</main>
+{% endblock %}

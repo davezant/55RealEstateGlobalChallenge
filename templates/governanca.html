@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}+55 Real Estate Global | Governança +55{% endblock %}
+
+{% block content %}
+<main class="max-w-7xl mx-auto px-6 py-20">
+    <div class="max-w-3xl space-y-6">
+        <span class="text-overline font-semibold uppercase text-brass-text tracking-widest">
+            Selo de governança
+        </span>
+        <h1 class="font-display text-h1 text-primary">
+            Governança +55 em cada ativo.
+        </h1>
+        <p class="text-lead text-ink-muted">
+            Due diligence institucional aplicada ativo a ativo: título, regulação, tributação cruzada, estrutura societária e risco cambial. O selo +55 é a garantia de que o imóvel foi examinado, não apenas apresentado.
+        </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
+        <div class="p-8 bg-surface rounded border border-line space-y-4">
+            <h2 class="font-display text-h3 text-primary">Tese e seleção por critério</h2>
+            <p class="text-small text-ink-muted leading-relaxed">
+                Cada ativo entra no portfólio apenas depois de passar por um critério de tese. Nada é adquirido por apelo estético ou modismo de mercado.
+            </p>
+        </div>
+        <div class="p-8 bg-surface rounded border border-line space-y-4">
+            <h2 class="font-display text-h3 text-primary">Parceiro local responsável</h2>
+            <p class="text-small text-ink-muted leading-relaxed">
+                A operação é conduzida por um parceiro local certificado, conhecedor da praça, da burocracia e da contraparte.
+            </p>
+        </div>
+    </div>
+
+    <div class="mt-12">
+        <a href="/imoveis" class="inline-flex items-center justify-center gap-3 bg-primary text-on-primary font-medium text-small px-8 py-4 rounded hover:bg-primary-700 shadow-sm">
+            <span>VER ATIVOS</span>
+            <span class="text-base">→</span>
+        </a>
+    </div>
+</main>
+{% endblock %}

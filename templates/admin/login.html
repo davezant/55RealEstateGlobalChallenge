@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>+55 Real Estate Global | Login</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/tailwind.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    </head>
+    <body>
+<main class="min-h-screen bg-tk-paper text-tk-ink font-text flex items-center justify-center p-4">
+        <div class="w-full max-w-md bg-tk-surface border border-tk-line rounded-lg shadow-sm p-8">
+            <a href="/" class="text-xs font">
+                <span class="text-xl">←</span> Voltar
+            </a>
+            <div class="text-center mb-8">
+                <span class="font-display font-extrabold tracking-tight text-xs text-tk-primary uppercase block mb-2">
+                    +55 REAL ESTATE GLOBAL
+                </span>
+                <h1 class="font-display font-bold text-2xl text-tk-ink tracking-tight">
+                    Painel do Administrador
+                </h1>
+                <p class="text-xs text-tk-ink-muted mt-1 font-medium">
+                    Autenticação requerida para gestão do sistema
+                </p>
+            </div>
+
+            <form action="{{ url_for('admin.login_form') }}" method="POST" class="space-y-5">
+                {% if csrf_token %}
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                {% endif %}
+                <div>
+                    <label for="email" class="block text-xs font-semibold text-tk-ink uppercase tracking-wider mb-2">
+                        E-mail
+                    </label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        required 
+                        autocomplete="username"
+                        placeholder="admin@55realestate.global"
+                        class="w-full bg-tk-paper border border-tk-line rounded px-3.5 py-2.5 text-sm text-tk-ink placeholder-tk-ink-muted/60 focus:outline-none focus:border-tk-primary focus:ring-1 focus:ring-tk-primary"
+                    >
+                </div>
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <label for="password" class="block text-xs font-semibold text-tk-ink uppercase tracking-wider">
+                            Senha
+                        </label>
+                    </div>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        required 
+                        autocomplete="current-password"
+                        placeholder="••••••••••••"
+                        class="w-full bg-tk-paper border border-tk-line rounded px-3.5 py-2.5 text-sm text-tk-ink placeholder-tk-ink-muted/60 focus:outline-none focus:border-tk-primary focus:ring-1 focus:ring-tk-primary"
+                    >
+                </div>
+                    <h1 class="text-xs text-red-800">{{ error }}</h1>
+                <button 
+                    type="submit" 
+                    class="w-full bg-tk-primary text-white py-2.5 px-4 rounded font-medium text-sm hover:bg-tk-primary-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-tk-primary"
+                >
+                    ENTRAR NO SISTEMA
+                </button>
+            </form>
+        </div>
+    </main>
+    </body>
+</html>

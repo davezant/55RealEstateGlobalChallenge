@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block title %}+55 Real Estate Global | Agendar Reunião{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-6 py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-7 flex flex-col p-8 sm:p-10 bg-surface border border-line rounded-xl gap-6 shadow-sm">
+            <div class="space-y-1">
+                <span class="text-overline font-semibold uppercase text-brass-text tracking-widest">
+                    Private Office
+                </span>
+                <h1 class="font-display text-h3 text-primary">
+                    Solicitar Reunião
+                </h1>
+            </div>
+
+            <form action="#" method="POST" class="flex flex-col gap-5">
+                <!-- Nome -->
+                <div class="flex flex-col gap-1.5">
+                    <label for="nome" class="text-xs font-semibold uppercase tracking-wider text-primary">
+                        Nome *
+                    </label>
+                    <input 
+                        type="text" 
+                        id="nome" 
+                        name="nome" 
+                        required 
+                        placeholder="Seu nome completo" 
+                        class="w-full bg-surface-hover border border-line rounded px-4 py-2.5 text-small text-primary placeholder:text-ink-muted focus:outline-none focus:border-primary"
+                    >
+                </div>
+                <div class="flex flex-col gap-1.5">
+                    <label for="email" class="text-xs font-semibold uppercase tracking-wider text-primary">
+                        E-mail *
+                    </label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        required 
+                        placeholder="seu.email@exemplo.com" 
+                        class="w-full bg-surface-hover border border-line rounded px-4 py-2.5 text-small text-primary placeholder:text-ink-muted focus:outline-none focus:border-primary"
+                    >
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="flex flex-col gap-1.5">
+                        <label for="telefone" class="text-xs font-semibold uppercase tracking-wider text-primary">
+                            Telefone
+                        </label>
+                        <input 
+                            type="tel" 
+                            id="telefone" 
+                            name="telefone" 
+                            placeholder="+55 (11) 99999-9999" 
+                            class="w-full bg-surface-hover border border-line rounded px-4 py-2.5 text-small text-primary placeholder:text-ink-muted focus:outline-none focus:border-primary"
+                        >
+                    </div>
+
+                    <div class="flex flex-col gap-1.5">
+                        <label for="data" class="text-xs font-semibold uppercase tracking-wider text-primary">
+                            Data Preferida *
+                        </label>
+                        <input 
+                            type="date" 
+                            id="data" 
+                            name="data" 
+                            required 
+                            class="w-full bg-surface-hover border border-line rounded px-4 py-2.5 text-small text-primary focus:outline-none focus:border-primary"
+                        >
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1.5">
+                    <label for="fuso_horario" class="text-xs font-semibold uppercase tracking-wider text-primary">
+                        Fuso Horário
+                    </label>
+                    <select 
+                        id="fuso_horario" 
+                        name="fuso_horario" 
+                        class="w-full bg-surface-hover border border-line rounded px-4 py-2.5 text-small text-primary focus:outline-none focus:border-primary"
+                    >
+                        <option value="gmt-3">GMT-3 (Brasil)</option>
+                        <option value="gmt-5">GMT-5 (Panamá)</option>
+                        <option value="gmt+4">GMT+4 (Dubai)</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+                <div class="flex flex-col gap-1.5">
+                    <label for="praca" class="text-xs font-semibold uppercase tracking-wider text-primary">
+                        Praça de Interesse
+                    </label>
+                    <select 
+                        id="praca" 
+                        name="praca" 
+                        class="w-full bg-surface-hover border border-line rounded px-4 py-2.5 text-small text-primary focus:outline-none focus:border-primary"
+                    >
+                        <option value="panama">Panamá</option>
+                        <option value="dubai">Dubai</option>
+                        <option value="brasil">Brasil</option>
+                        <option value="adefinir">Ainda a definir</option>
+                    </select>
+                </div>
+                <div class="flex flex-col gap-1.5">
+                    <label for="mensagem" class="text-xs font-semibold uppercase tracking-wider text-primary">
+                        Mensagem (Opcional)
+                    </label>
+                    <textarea 
+                        id="mensagem" 
+                        name="mensagem" 
+                        rows="3" 
+                        placeholder="Descreva detalhes sobre sua tese de investimento ou tese patrimonial..." 
+                        class="w-full bg-surface-hover border border-line rounded px-4 py-2.5 text-small text-primary placeholder:text-ink-muted focus:outline-none focus:border-primary resize-none"
+                    ></textarea>
+                </div>
+                <button 
+                    type="submit" 
+                    class="inline-flex items-center justify-center gap-3 bg-primary text-on-primary font-medium text-small px-8 py-3.5 rounded hover:bg-primary-700 shadow-sm mt-2"
+                >
+                    <span>SOLICITAR REUNIÃO</span>
+                    <span class="text-base">→</span>
+                </button>
+            </form>
+        </div>
+        <div class="lg:col-span-5 flex flex-col justify-between space-y-12 lg:pl-6 lg:py-4">
+            <div class="space-y-6">
+                <span class="text-overline font-semibold uppercase text-brass-text tracking-widest">
+                    Reunião Privada
+                </span>
+
+                <h2 class="font-display text-h2 text-primary leading-tight">
+                    Um encontro, não uma venda.
+                </h2>
+
+                <p class="text-body text-ink-muted leading-relaxed">
+                    Indique o seu horário e fuso preferidos. O desk +55 prepara a conversa em torno da sua tese patrimonial, não de um catálogo.
+                </p>
+
+                <hr class="border-line my-6">
+
+                <div class="space-y-3">
+                    <h3 class="font-display font-semibold text-primary text-lg">
+                        Private desk +55
+                    </h3>
+                    <p class="text-small text-ink-muted leading-relaxed">
+                        Atendimento por agenda. Sem pressão comercial, sem corretores, apenas a tese, a praça e o património.
+                    </p>
+                </div>
+            </div>
+
+            <div class="p-6 bg-surface border border-line rounded-lg space-y-3">
+                <span class="text-overline font-semibold uppercase text-brass-text tracking-widest">
+                    Disponibilidade
+                </span>
+                <p class="text-small font-medium text-primary">
+                    Segunda a sexta · 9h às 19h (hora local)
+                </p>
+                <p class="text-small text-ink-muted">
+                    São Paulo · Panamá · Dubai
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

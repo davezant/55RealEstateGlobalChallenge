@@ -1,0 +1,50 @@
+{% extends "admin/base.html" %}
+
+{% block title %}+55 Real Estate Global | Painel Administrativo{% endblock %}
+
+{% block content %}
+<main class="flex-1 p-4 md:p-10 flex flex-col gap-2 font-display ">
+    <h2 class="text-2xl font-semibold mb-4">
+        Gerenciar Páginas
+    </h2>
+    {% if saved %}
+    <p class="text-sm text-tk-success" role="status">{{ saved }}</p>
+    {% endif %}
+     <div class="p-6 bg-tk-surface border border-tk-primary/15 rounded-lg">
+        <form method="POST" action="{{ url_for('admin.pages') }}" class="flex flex-col gap-4">
+            <input type="hidden" name="pagina" value="inicio">
+            <h3 class="text-lg font-semibold">Início</h3>
+            <div class="flex flex-col gap-2">
+                <label for="inicio_titulo" class="text-sm font-semibold">Título</label>
+                <input id="inicio_titulo" name="titulo" value="{{ texts.inicio.titulo }}" required maxlength="2000" class="p-2 rounded border border-line">
+            </div>
+            <div class="flex flex-col gap-2">
+                <label for="inicio_destaque" class="text-sm font-semibold">Título em destaque</label>
+                <input id="inicio_destaque" name="destaque" value="{{ texts.inicio.destaque }}" required maxlength="2000" class="p-2 rounded border border-line">
+            </div>
+            <div class="flex flex-col gap-2">
+                <label for="inicio_abertura" class="text-sm font-semibold">Texto de abertura</label>
+                <textarea id="inicio_abertura" name="abertura" rows="3" required maxlength="2000" class="p-2 rounded border border-line">{{ texts.inicio.abertura }}</textarea>
+            </div>
+            {% if errors.inicio %}<p class="text-xs text-tk-error" role="alert">{{ errors.inicio }}</p>{% endif %}
+            <div class="flex justify-end">
+                <button type="submit" class="px-6 py-2 bg-tk-primary text-white rounded font-semibold">Salvar Início</button>
+            </div>
+        </form>
+     </div>
+     <div class="p-6 bg-tk-surface border border-tk-primary/15 rounded-lg">
+        <form method="POST" action="{{ url_for('admin.pages') }}" class="flex flex-col gap-4">
+            <input type="hidden" name="pagina" value="rodape">
+            <h3 class="text-lg font-semibold">Rodapé</h3>
+            <div class="flex flex-col gap-2">
+                <label for="rodape_texto" class="text-sm font-semibold">Texto</label>
+                <textarea id="rodape_texto" name="texto" rows="3" required maxlength="2000" class="p-2 rounded border border-line">{{ texts.rodape.texto }}</textarea>
+            </div>
+            {% if errors.rodape %}<p class="text-xs text-tk-error" role="alert">{{ errors.rodape }}</p>{% endif %}
+            <div class="flex justify-end">
+                <button type="submit" class="px-6 py-2 bg-tk-primary text-white rounded font-semibold">Salvar Rodapé</button>
+            </div>
+        </form>
+     </div>
+</main>
+{% endblock %}

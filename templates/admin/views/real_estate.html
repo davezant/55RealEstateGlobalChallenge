@@ -1,0 +1,44 @@
+{% extends "admin/base.html" %}
+
+{% block title %}+55 Real Estate Global | Gerenciar Imóveis{% endblock %}
+
+{% block content %}
+<main class="p-4 md:p-10 flex flex-1 flex-col font-display ">
+   <h2 class="text-2xl font-semibold mb-4">
+        Gerenciar Imóveis
+    </h2>
+    {% if saved %}
+    <p class="mb-4 text-sm text-tk-success">{{ saved }}</p>
+    {% endif %}
+    <div class="p-6 bg-tk-surface border border-tk-primary/15 rounded-lg">
+         <div class="flex flex-row justify-between font-bold">
+              <div class="flex flex-row justify-between w-full pr-4">
+                  <h1>Título do Imóvel</h1>
+                  <h1>Situação e preço</h1>
+              </div>
+               <div class="flex flex-row border-black gap-2">
+                   <a href="{{ url_for('admin.real_estate_new') }}" aria-label="Novo imóvel">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-plus preview-icon"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+                   </a>
+              </div>
+         </div>
+         {% for item in items %}
+         <div class="flex flex-row justify-between items-center gap-4 border-t border-tk-line mt-4 pt-4 text-sm">
+             <div class="flex flex-col">
+                 <a href="{{ url_for('admin.real_estate_edit', real_estate_id=item.real_estate_id) }}" class="font-semibold underline underline-offset-2">{{ item.titulo }}</a>
+                 <span class="text-xs text-tk-ink-muted">{{ item.ref }} · {{ item.praca_nome }} · {{ item.tipologia_label }}</span>
+             </div>
+             <div class="flex flex-col items-end">
+                 <span class="text-xs font-semibold uppercase tracking-wider">{{ item.situacao }}</span>
+                 <span class="text-xs text-tk-ink-muted">{{ item.preco_texto }}</span>
+             </div>
+         </div>
+         {% endfor %}
+         {% if not items %}
+         <div class="p-5 flex flex-col items-center">
+             <h1 class="text-xs">Nenhum Imóvel Definido...</h1>
+         </div>
+         {% endif %}
+    </div>
+</main>
+{% endblock %}

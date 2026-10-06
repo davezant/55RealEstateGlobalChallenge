@@ -1,0 +1,12 @@
+{
+  "stack": "python-flask-sqlite",
+  "renderizacao": "ssr",
+  "comandos": {
+    "instalar": "pip install -r requirements.txt",
+    "migrar": "python manage.py migrar",
+    "semear": "python manage.py semear",
+    "iniciar": "python wsgi.py",
+    "testar": "pytest"
+  },
+  "prontoQuando": "GET /saude responde 200"
+}

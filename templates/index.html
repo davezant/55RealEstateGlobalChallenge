@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block title %}+55 Real Estate Global{% endblock %}
+
+{% block content %}
+<main>
+{% include "partials/marquee.html" %}
+<section class="relative min-h-[calc(100vh-80px)] flex flex-col justify-between max-w-7xl mx-auto px-6 py-16 border-b border-line">
+    <div class="max-w-4xl my-auto space-y-8 w-full">
+
+        <h1 class="font-display text-h1 text-primary max-w-measure">
+            {{ inicio.titulo }}<br>
+            <span class="italic font-normal text-brass-text">{{ inicio.destaque }}</span>
+        </h1>
+
+        <p class="text-lead text-ink-muted max-w-2xl">
+            {{ inicio.abertura }}
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-4 w-full">
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
+                <a href="/diagnostico" class="inline-flex items-center justify-center gap-3 bg-primary text-on-primary font-medium text-small px-8 py-4 rounded hover:bg-primary-700 shadow-sm">
+                    <span>INICIAR DIAGNÓSTICO DE ALOCAÇÃO</span>
+                    <span class="text-base">→</span>
+                </a>
+                <a href="/imoveis" class="inline-flex items-center justify-center gap-2 bg-transparent text-ink border border-border-strong font-medium text-small px-8 py-4 rounded hover:bg-surface">
+                    VER ATIVOS
+                </a>
+            </div>
+
+            <div class="flex items-center gap-2 text-overline font-semibold text-ink-muted uppercase animate-bounce sm:ml-auto pb-2">
+                <span>↓ SCROLL</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="metodo" class="max-w-7xl mx-auto px-6 py-20 border-b border-line">
+    <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
+        <div class="max-w-xl space-y-4">
+            <span class="text-overline font-semibold uppercase text-brass-text tracking-widest">
+                Da tese ao ativo
+            </span>
+            <h2 class="font-display text-h2 text-primary">
+                Três etapas entre a intenção e o ativo.
+            </h2>
+        </div>
+        <p class="text-ink-muted max-w-md text-body leading-relaxed">
+            Nem todo investidor compra de imediato, e não deveria, sem um estudo. Entendemos perfil, objetivo e horizonte para recomendar a alocação que faz sentido para o seu patrimônio.
+        </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-8 bg-surface rounded border border-line space-y-4">
+            <span class="text-3xl font-display font-bold text-brass-text">01</span>
+            <h3 class="font-display text-h3 text-primary">Tese e seleção por critério</h3>
+            <p class="text-small text-ink-muted leading-relaxed">
+                Cada ativo entra no portfólio apenas depois de passar por um critério de tese: preservação de capital, geração de renda, valorização cambial ou diversificação. Nada é adquirido por apelo estético ou modismo de mercado.
+            </p>
+        </div>
+
+        <div class="p-8 bg-surface rounded border border-line space-y-4">
+            <span class="text-3xl font-display font-bold text-brass-text">02</span>
+            <h3 class="font-display text-h3 text-primary">Governança +55 em cada ativo</h3>
+            <p class="text-small text-ink-muted leading-relaxed">
+                Due diligence institucional aplicada ativo a ativo: título, regulação, tributação cruzada, estrutura societária e risco cambial. O selo +55 é a garantia de que o imóvel foi examinado, não apenas apresentado.
+            </p>
+        </div>
+
+        <div class="p-8 bg-surface rounded border border-line space-y-4">
+            <span class="text-3xl font-display font-bold text-brass-text">03</span>
+            <h3 class="font-display text-h3 text-primary">Execução por parceiro certificado local</h3>
+            <p class="text-small text-ink-muted leading-relaxed">
+                A operação é conduzida por um parceiro local certificado, conhecedor da praça, da burocracia e da contraparte. O investidor nunca negocia sozinho em um país que não domina.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="max-w-7xl mx-auto px-6 py-20 border-b border-line">
+    <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-12">
+        <div class="max-w-xl space-y-4">
+            <span class="text-overline font-semibold uppercase text-brass-text tracking-widest">
+                Portfólio de ativos
+            </span>
+            <h2 class="font-display text-h2 text-primary">
+                Ativos de alto padrão, curados por tese.
+            </h2>
+        </div>
+        <a href="/imoveis" class="text-small font-medium text-primary underline underline-offset-4">VER ATIVOS →</a>
+    </div>
+
+    {% if highlights %}
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {% for item in highlights %}
+        {% include "partials/property_card.html" %}
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-ink-muted text-body">Nenhum ativo neste critério.</p>
+    {% endif %}
+</section>
+
+<section id="pracas" class="max-w-7xl mx-auto px-6 py-20">
+    <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+        <span class="text-overline font-semibold uppercase text-brass-text tracking-widest">
+            Cada praça entra por uma tese
+        </span>
+        <h2 class="font-display text-h2 text-primary">
+            Não vendemos praças. Entramos nelas com razão.
+        </h2>
+        <p class="text-ink-muted text-body">
+            Renda, valorização ou preservação.
+        </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="border border-line rounded p-6 bg-surface space-y-3">
+            <h4 class="font-display font-semibold text-primary text-lg">Panamá</h4>
+            <p class="text-overline text-brass-text">Eficiência regulatória e cambial</p>
+            <p class="text-small text-ink-muted">
+                Uma praça onde a moeda é o USD e a estrutura de propriedade é simples. Ideal para preservação de capital e exposição cambial limpa, sem ruído regulatório.
+            </p>
+            <p class="text-small font-medium text-ink">Dolarização. Estabilidade jurídica. Tributação enxuta.</p>
+            <a href="/imoveis?pais=PA" class="inline-block text-small font-medium text-primary underline underline-offset-4">VER ATIVOS →</a>
+        </div>
+
+        <div class="border border-line rounded p-6 bg-surface space-y-3">
+            <h4 class="font-display font-semibold text-primary text-lg">Dubai</h4>
+            <p class="text-overline text-brass-text">Renda e valorização em moeda forte</p>
+            <p class="text-small text-ink-muted">
+                Renda em AED atrelada ao dólar, demanda global contínua e residência via Golden Visa. A praça onde rendimento e valorização convivem em moeda forte.
+            </p>
+            <p class="text-small font-medium text-ink">Yields 6 a 9%. Golden Visa. Sem imposto de renda.</p>
+            <p class="text-small text-ink-muted">Rendimentos, Golden Visa e imposto citados nesta praça são copy comercial ilustrativa.</p>
+            <a href="/imoveis?pais=AE" class="inline-block text-small font-medium text-primary underline underline-offset-4">VER ATIVOS →</a>
+        </div>
+
+        <div class="border border-line rounded p-6 bg-surface space-y-3">
+            <h4 class="font-display font-semibold text-primary text-lg">Brasil</h4>
+            <p class="text-overline text-brass-text">Proximidade e profundidade de mercado</p>
+            <p class="text-small text-ink-muted">
+                Para quem quer patrimônio em moeda real com gestão próxima. Selecionamos ativos de estoque em praças consolidadas: não especulação, mas posição de valor.
+            </p>
+            <p class="text-small font-medium text-ink">Mercado profundo. Ativos de estoque. Conhecimento local.</p>
+            <a href="/imoveis?pais=BR" class="inline-block text-small font-medium text-primary underline underline-offset-4">VER ATIVOS →</a>
+        </div>
+    </div>
+</section>
+</main>
+{% endblock %}

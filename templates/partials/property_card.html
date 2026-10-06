@@ -1,0 +1,20 @@
+<a href="{{ url_for('main.real_estate_product', slug=item.slug) }}" class="group flex flex-col bg-surface border border-line rounded overflow-hidden hover:border-strong focus:outline-none focus-visible:ring-2 focus-visible:ring-tk-primary">
+    <div class="relative w-full h-56 bg-paper overflow-hidden">
+        {% if item.capa %}
+        <img src="{{ item.capa.url }}" alt="{{ item.capa.alt }}" loading="lazy" class="w-full h-full object-cover">
+        {% else %}
+        <div class="w-full h-full flex items-center justify-center text-small text-ink-muted">Sem foto</div>
+        {% endif %}
+        {% if item.situacao == 'reservado' %}
+        <span class="absolute top-3 left-3 bg-primary text-on-primary text-overline font-semibold uppercase px-3 py-1 rounded">Reservado</span>
+        {% elif item.situacao == 'vendido' %}
+        <span class="absolute top-3 left-3 bg-tk-ink text-on-primary text-overline font-semibold uppercase px-3 py-1 rounded">Vendido</span>
+        {% endif %}
+    </div>
+    <div class="flex flex-col gap-2 p-5">
+        <span class="text-overline font-semibold uppercase text-brass-text">{{ item.praca_nome }} · {{ item.tipologia_label }}</span>
+        <h3 class="font-display text-h3 text-primary">{{ item.titulo }}</h3>
+        <p class="text-small text-ink-muted">{{ item.bairro }}, {{ item.cidade }}</p>
+        <p class="text-body font-medium text-ink pt-2 tabular-nums">{{ item.preco_texto }}</p>
+    </div>
+</a>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/tailwind.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    </head>
+    <body class="flex flex-col min-h-screen bg-paper text-ink font-text">
+        <header class="w-full bg-surface/80 backdrop-blur-md border-b border-line">
+            <nav class="max-w-7xl mx-auto items-center justify-between px-6 py-4 hidden md:flex"> 
+                <a href="/" class="font-display font-extrabold tracking-tight text-lg text-primary hover:text-brass">
+                    +55 Real Estate Global
+                </a>
+
+                <ul class="flex items-center gap-8 font-text text-small font-medium text-ink-muted">
+                    <li><a href="/diagnostico" class="hover:text-primary">DIAGNÓSTICO</a></li>
+                    <li><a href="/tese" class="hover:text-primary">TESE</a></li>
+                    <li><a href="/pracas" class="hover:text-primary">PRAÇAS</a></li>
+                    <li><a href="/imoveis" class="hover:text-primary">ATIVOS</a></li>
+                    <li><a href="/tokenizacao" class="hover:text-primary">TOKENIZAÇÃO</a></li>
+                    <li>
+                        <a href="/schedule" class="bg-primary text-on-primary px-5 py-2.5 rounded font-medium text-small">
+                            AGENDAR REUNIÃO
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <nav class="max-w-7xl mx-auto items-center justify-between px-6 py-4 flex md:hidden absolute flex flex-row w-full bg-paper/90 backdrop-blur-md border-b border-line"> 
+                <a href="/" class="font-display font-extrabold tracking-tight text-lg text-primary hover:text-brass">
+                    +55 Real Estate Global
+                </a>
+                <details class="group">
+                    <summary class="cursor-pointer list-none text-small font-medium text-ink px-3 py-2 border border-line rounded">Menu</summary>
+                    <ul class="absolute left-0 top-full w-full flex flex-col gap-1 px-6 py-4 bg-paper border-b border-line text-small font-medium text-ink">
+                        <li><a href="/diagnostico" class="block py-2">DIAGNÓSTICO</a></li>
+                        <li><a href="/tese" class="block py-2">TESE</a></li>
+                        <li><a href="/pracas" class="block py-2">PRAÇAS</a></li>
+                        <li><a href="/imoveis" class="block py-2">ATIVOS</a></li>
+                        <li><a href="/tokenizacao" class="block py-2">TOKENIZAÇÃO</a></li>
+                        <li><a href="/schedule" class="block py-2">AGENDAR REUNIÃO</a></li>
+                    </ul>
+                </details>
+            </nav>
+        </header>
+
+        <div class="flex-grow">
+            {% block content %}{% endblock %}
+        </div>
+
+        <footer class="w-full bg-tk-ink text-tk-surface border-t border-tk-primary pt-16 pb-12">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-tk-line/15">
+            <div class="md:col-span-5 space-y-6">
+                <a href="/" class="inline-block font-display font-extrabold tracking-tight text-xl text-tk-surface hover:text-tk-brass">
+                    +55 REAL ESTATE GLOBAL
+                </a>
+                <p class="text-sm text-tk-line/80 leading-relaxed max-w-sm">
+                    {{ footer.texto }}
+                </p>
+                <p class="text-sm text-tk-line/80 font-extrabold">
+                    Projeto de avaliação técnica. Imóveis, valores e contatos fictícios.
+                </p>
+            </div>
+            <div class="md:col-span-2 space-y-4">
+                <h3 class="text-xs font-semibold uppercase tracking-widest text-tk-brass">
+                    Navegação
+                </h3>
+                <ul class="space-y-2.5 text-sm font-medium text-tk-line/70">
+                    <li><a href="/tese" class="hover:text-tk-surface">Tese</a></li>
+                    <li><a href="/pracas" class="hover:text-tk-surface">Praças</a></li>
+                    <li><a href="/imoveis" class="hover:text-tk-surface">Ativos</a></li>
+                    <li><a href="/tokenizacao" class="hover:text-tk-surface">Tokenização</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-2 space-y-4">
+                <h3 class="text-xs font-semibold uppercase tracking-widest text-tk-brass">
+                    Instituição
+                </h3>
+                <ul class="space-y-2.5 text-sm font-medium text-tk-line/70">
+                    <li><a href="/schedule" class="hover:text-tk-surface">Agendar reunião</a></li>
+                    <li><a href="/lista-de-espera" class="hover:text-tk-surface">Lista de espera</a></li>
+                    <li><a href="/governanca" class="hover:text-tk-surface">Governança +55</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-3 space-y-4">
+                <h3 class="text-xs font-semibold uppercase tracking-widest text-tk-brass">
+                    Contacto Privado
+                </h3>
+                <div class="space-y-3 text-sm text-tk-line/70">
+                    <p class="font-medium text-xs text-tk-surface">São Paulo · Panamá · Dubai</p>
+                    <p><a href="mailto:contato@realestate.example" class="hover:text-tk-surface">contato@realestate.example</a></p>
+                    <p><a href="tel:+99910000001" class="hover:text-tk-surface">+999 1000 0001</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-tk-line/70 uppercase tracking-wider font-medium">
+            <p>&copy; 2026 +55 REAL ESTATE GLOBAL. TODOS OS DIREITOS RESERVADOS.</p>
+            <p class="font-display italic lowercase tracking-normal text-tk-brass">
+                Patrimônio construído sob tese.
+            </p>
+        </div>
+    </div>
+</footer>
+    
+</body>
+</html>
